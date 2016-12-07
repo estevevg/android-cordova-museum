@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Questionari generic per Cordova
 
 
@@ -35,3 +36,8 @@ make android
 ```sh
 python main-test.py
 ```
+=======
+# Quiz project
+
+Initial readme
+>>>>>>> bf93bd58e19b4376562d62ec434c6ddfb4c4a7c9
