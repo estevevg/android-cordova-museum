@@ -5,61 +5,34 @@ angular.module('QuestApp.quest', [])
 .factory('Quest', ['$rootScope', function($rootScope){
 
 // The table contains key: resourse , value: state
-  var table = {
-    '/intro' : 'intro',
-    '/login' : 'menu.products',
-    '/register': 'unauthorized',
-    '/home': 'menu.home',
-    '/ticket' : 'menu.home',
-    '/userSettings': 'menu.home',
-    '/repair': 'ticket',
-    '/ticketData': 'ticket',
-    '/qrcode': 'menu.home',
-    '/products': 'menu.products',
-    '/return': 'ticket',
-    '/warranty': 'ticket',
-    '/nfc': 'menu.home',
-    '/productDesc': 'menu.products',
-    '/imageData': 'imageTicket',
-    '/imageTicket': 'menu.home',
-    '/recovery': 'unauthorized'
-  };
+  var quest = [{"img":"img/images.jsp",
+                "quest": "Quin Zelda es aquest?",
+                "answer": {
+                  "A": "Link to the past",
+                  "B": "Link's adventure",
+                  "C": "Phantom hourglass"
+                }},
+                {"img":"img/images.jsp",
+                  "quest": "Perque es important aquest joc?",
+                  "answer": {
+                    "A": "Perque li mola a l'Esteve",
+                    "B": "Perque es un gran precedent en els action-rpg",
+                    "C": "Zelda es el nom del noi"
+                  }}];
+  var answer = [];
+  var i = 0;
 
   var initQuest = function() {
-    return table;
+    answer = [];
+    i = 0;
+    return quest[i];
   }
 
-  var transitionTo = function(state) {
-    $rootScope.transaction = true;
-    $state.transitionTo(state);
-  }
-
-  /**
-  * Transition and sets the back route
-  */
-  var transitionToBack = function(state, back) {
-    $rootScope.transaction = true;
-    $rootScope.back = back;
-    $state.transitionTo(state);
-  }
-
-  /**
-  * Goes back to the transition setted
-  */
-  var transitionBack = function() {
-    if($rootScope.back){
-      var back = $rootScope.back;
-      $rootScope.back = null;
-      $state.transitionTo(back);
-    } else {
-      console.log('No back is defined');
-    }
-  }
-
-  var transitionToReload = function(state) {
-    $rootScope.transaction = true;
-    $state.transitionTo(state, null, {'reload':true});
-  }
+  var setAnswer = function(answer) {
+    answer.push(answer);
+    i+=1;
+    return quest.length < i ? quest[i] : -1;
+  };
 
   return {
     getTable : getTable,
