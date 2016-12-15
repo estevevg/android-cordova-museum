@@ -28,18 +28,20 @@ angular.module('QuestApp.quest', [])
     return quest[i];
   }
 
-  var setAnswer = function(answer) {
+  var giveAnswer = function(answer) {
     answer.push(answer);
     i+=1;
-    return quest.length < i ? quest[i] : -1;
+    return quest.length < i ? quest[i] : null;
+  };
+
+  var getAnswer = function() {
+    return answer;
   };
 
   return {
-    getTable : getTable,
-    transitionTo: transitionTo,
-    transitionToReload: transitionToReload,
-    transitionToBack: transitionToBack,
-    transitionBack: transitionBack
+    initQuest : initQuest,
+    giveAnswer: giveAnswer,
+    getAnswer: getAnswer
   }
 
 }]);
