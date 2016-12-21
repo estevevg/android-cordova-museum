@@ -9,11 +9,7 @@ angular.module('Quest', [
 .controller('QuestController',
     ['$scope', '$rootScope', '$state', '$mdDialog', 'QuestService',
         function ($scope, $rootScope, $state, $mdDialog, QuestService) {
-
-					$scope.back = function() {
-        		RoutingTable.transitionTo('unauthorized');
-        	};
-
+					
 					$scope.recoverPassword = function() {
 						var email = $scope.email;
 						UserService.recoverPassword(email, function(err, status, response){
