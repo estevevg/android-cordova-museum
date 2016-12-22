@@ -14,8 +14,11 @@ angular.module('End', [
 
           i=0;
           score=0;
-          for(a in answer){
-            score+= a == solution[i] ? 1 : 0;
+          console.log(answer);
+          for(var i=0; i<answer.length; ++i){
+            console.log("ans: "+ answer[i]);
+            console.log("sol: "+solution[i])
+            score+= answer[i] == solution[i] ? 1 : 0;
           }
 
           $scope.score = score;

@@ -12,7 +12,7 @@ angular.module('QuestApp.quest', [])
                   {"key": "B", "text": "Link's adventure"},
                   {"key": "C", "text": "Phantom hourglass"}
                 ]},
-                {"img":"images.jsp",
+                {"img":"logo.png",
                   "quest": "Perque es important aquest joc?",
                   "answer": [
                     {"key": "A", "text": "Perque li mola a l'Esteve"},
@@ -30,6 +30,7 @@ angular.module('QuestApp.quest', [])
   }
 
   var giveAnswer = function(ans) {
+    console.log(ans);
     answer.push(ans);
     i+=1;
     return i < quest.length ? quest[i] : null;
