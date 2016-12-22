@@ -1,5 +1,13 @@
 <div ng-controller="QuestController">
-  <img/>
-  <p></p>
-  <li></li>
+  <img ng-src="img/{{quest.img}}"/>
+  <p>{{quest.quest}}</p>
+  <md-radio-group ng-model="answer" class="md-primary">
+        <md-radio-button ng-repeat="a in quest.answer"
+                         ng-value="a.key"
+                         ng-class="{'md-align-top-left': $index==1}" >
+                         {{a.key}}: {{a.text}}
+        </md-radio-button>
+    </md-radio-group>
+
+    <md-button class="md-raised md-primary" ng-click="next()">Respondre</md-button>
 </div>

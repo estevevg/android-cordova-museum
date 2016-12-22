@@ -5,6 +5,12 @@ var template = require('gulp-template');
 var rename = require('gulp-rename');
 
 
+gulp.task('index', function(){
+	gulp.src(['./src/index.tpl.html'])
+    .pipe(rename("index.html"))
+		.pipe(gulp.dest('./www/'));
+});
+
 gulp.task('html', function(){
 	gulp.src(['./src/js/**/*.html'])
 		.pipe(gulp.dest('./www/js/'));

@@ -1,39 +1,33 @@
 var angular = require('angular');
+require('../../services/questService');
 
-require('../../../core/services/apiService');
-
-angular.module('Quest', [
-	'QuestApp.quest'
+angular.module('QuestIT', [
+  'QuestApp.quest'
 ])
 
 .controller('QuestController',
     ['$scope', '$rootScope', '$state', '$mdDialog', 'QuestService',
         function ($scope, $rootScope, $state, $mdDialog, QuestService) {
-					
-					$scope.recoverPassword = function() {
-						var email = $scope.email;
-						UserService.recoverPassword(email, function(err, status, response){
-							if(err || status != 200){
-								$mdDialog.show(
-									$mdDialog.alert()
-										.parent(angular.element(document.body))
-										.title('Email incorrecto')
-										.content('El usuario '+email+' no existe en el sistema')
-										.ariaLabel('Email incorrecto')
-										.ok('Ok')
-									);
-							} else {
-								$mdDialog.show(
-									$mdDialog.alert()
-										.parent(angular.element(document.body))
-										.title('Notificado')
-										.content('Se ha enviado un correo a '+email+' para recuperar su contraseña')
-										.ariaLabel('Notificado')
-										.ok('Ok')
-								).then(function(){
-									RoutingTable.transitionTo('unauthorized');
-								});
+
+					$scope.quest = $rootScope.currentQuest;
+
+          $scope.next = function(){
+						console.log('Selecting solution');
+						var answer = $scope.answer;
+						if(!answer) {
+							alert("Selecciona una resposta");
+						} else {
+							console.log(answer);
+							quest = QuestService.giveAnswer(answer);
+							if(!quest) {
+							 console.log("End of quest");
+							 $state.transitionTo("end");
+						 } else {
+								console.log(quest);
+								$rootScope.currentQuest=quest;
+								$state.reload();
 							}
-						});
-					};
-    	}]);
+						}
+          };
+
+        }]);

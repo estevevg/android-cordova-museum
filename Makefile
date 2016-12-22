@@ -11,7 +11,7 @@ install:
 www:
 	@browserify src/js/app.js -o www/bundle.js
 	@node_modules/.bin/gulp build
-	sass src/css/app.scss www/css/app.css
+	#sass src/css/app.scss www/css/app.css
 	@cordova prepare
 
 android: www

@@ -2,23 +2,24 @@ var angular = require('angular');
 
 angular.module('QuestApp.quest', [])
 
-.factory('Quest', ['$rootScope', function($rootScope){
+.factory('QuestService', ['$rootScope', function($rootScope){
 
 // The table contains key: resourse , value: state
-  var quest = [{"img":"img/images.jsp",
+  var quest = [{"img":"images.jpg",
                 "quest": "Quin Zelda es aquest?",
-                "answer": {
-                  "A": "Link to the past",
-                  "B": "Link's adventure",
-                  "C": "Phantom hourglass"
-                }},
-                {"img":"img/images.jsp",
+                "answer": [
+                  {"key": "A", "text": "Link to the past"},
+                  {"key": "B", "text": "Link's adventure"},
+                  {"key": "C", "text": "Phantom hourglass"}
+                ]},
+                {"img":"images.jsp",
                   "quest": "Perque es important aquest joc?",
-                  "answer": {
-                    "A": "Perque li mola a l'Esteve",
-                    "B": "Perque es un gran precedent en els action-rpg",
-                    "C": "Zelda es el nom del noi"
-                  }}];
+                  "answer": [
+                    {"key": "A", "text": "Perque li mola a l'Esteve"},
+                    {"key": "B", "text": "Perque es un gran precedent en els action-rpg"},
+                    {"key": "C", "text": "Zelda es el nom del noi"}
+                  ]}];
+  var solution = ["A", "B"];
   var answer = [];
   var i = 0;
 
@@ -28,20 +29,25 @@ angular.module('QuestApp.quest', [])
     return quest[i];
   }
 
-  var giveAnswer = function(answer) {
-    answer.push(answer);
+  var giveAnswer = function(ans) {
+    answer.push(ans);
     i+=1;
-    return quest.length < i ? quest[i] : null;
+    return i < quest.length ? quest[i] : null;
   };
 
   var getAnswer = function() {
     return answer;
   };
 
+  var getSolution = function() {
+    return solution;
+  };
+
   return {
     initQuest : initQuest,
     giveAnswer: giveAnswer,
-    getAnswer: getAnswer
+    getAnswer: getAnswer,
+    getSolution: getSolution
   }
 
 }]);

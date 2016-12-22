@@ -4,19 +4,21 @@ var angular = require('angular');
 require('./ng-cordova');
 require('ui-router');
 require('./views/introview/introController');
+require('./views/questview/questController');
+require('./views/endview/endController');
 
 
 /*angular.module('Authentication', []);
 angular.module('Tickets', []);
 angular.module('settings', []);*/
 
-var moved = false;
-
 angular.module('QuestBasic', [
     require('angular-material'),
     'ngCordova',
     'ui.router',
-    'Intro'
+    'Intro',
+    'QuestIT',
+    'End'
 ])
 
 .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$mdThemingProvider',
@@ -27,7 +29,15 @@ angular.module('QuestBasic', [
     $stateProvider
         .state('intro',{
             url:'/intro',
-            templateUrl: 'js/views/nfc/nfcView.html'
+            templateUrl: 'js/views/introview/introView.html'
+        })
+        .state('quest',{
+            url:'/quest',
+            templateUrl: 'js/views/questview/questView.html'
+        })
+        .state('end',{
+            url:'/end',
+            templateUrl: 'js/views/endview/endView.html'
         });
 
 
@@ -35,7 +45,5 @@ angular.module('QuestBasic', [
 
 .run(['$rootScope', '$state', '$location',
     function ($rootScope, $state, $location) {
-
-        });
 
 }]);
