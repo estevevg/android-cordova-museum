@@ -3,8 +3,7 @@
   <p>{{quest.quest}}</p>
   <md-radio-group ng-model="answer" class="md-primary">
         <md-radio-button ng-repeat="a in quest.answer"
-                         ng-value="a.key"
-                         ng-class="{'md-align-top-left': $index==1}" >
+                         ng-value="a.key" >
                          {{a.key}}: {{a.text}}
         </md-radio-button>
     </md-radio-group>
