@@ -6,7 +6,8 @@ clean:
 
 install:
 	npm install
-	bower install
+	mkdir www
+	
 
 www:
 	@browserify src/js/app.js -o www/bundle.js
